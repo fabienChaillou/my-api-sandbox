@@ -2,4 +2,4 @@ lexik_jwt_authentication:
     secret_key: '%env(resolve:JWT_SECRET_KEY)%'
     public_key: '%env(resolve:JWT_PUBLIC_KEY)%'
     pass_phrase: 'sFN}+6A"5;PB9}hV'
-    token_ttl: 3600 # Default configuration
+    token_ttl: 360000 # Default configuration

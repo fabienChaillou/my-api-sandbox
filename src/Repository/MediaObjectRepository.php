@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\Avatar;
+use App\Entity\MediaObject;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method Avatar|null find($id, $lockMode = null, $lockVersion = null)
- * @method Avatar|null findOneBy(array $criteria, array $orderBy = null)
- * @method Avatar[]    findAll()
- * @method Avatar[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method MediaObject|null find($id, $lockMode = null, $lockVersion = null)
+ * @method MediaObject|null findOneBy(array $criteria, array $orderBy = null)
+ * @method MediaObject[]    findAll()
+ * @method MediaObject[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AvatarRepository extends ServiceEntityRepository
+class MediaObjectRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Avatar::class);
+        parent::__construct($registry, MediaObject::class);
     }
 
     // /**
@@ -37,7 +37,7 @@ class AvatarRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Avatar
+    public function findOneBySomeField($value): ?MediaObject
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')

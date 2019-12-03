@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiProperty;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
@@ -46,10 +47,11 @@ class Player
     private $games;
 
     /**
-     * @var Avatar
+     * @var MediaObject|null
      *
-     * @ORM\OneToOne(targetEntity="Avatar")
+     * @ORM\OneToOne(targetEntity="MediaObject")
      * @ORM\JoinColumn(nullable=true)
+     * @ApiProperty(iri="http://schema.org/image")
      */
     protected $avatar;
 
@@ -158,12 +160,12 @@ class Player
         return $this;
     }
 
-    public function getAvatar(): ?Avatar
+    public function getAvatar(): ?MediaObject
     {
         return $this->avatar;
     }
 
-    public function setAvatar(?Avatar $avatar): self
+    public function setAvatar(?MediaObject $avatar): self
     {
         $this->avatar = $avatar;
 
