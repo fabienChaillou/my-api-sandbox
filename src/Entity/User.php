@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -24,6 +25,13 @@ class User implements UserInterface
     private $username;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $email;
+
+    /**
      * @ORM\Column(type="string", length=500)
      */
     private $password;
@@ -41,21 +49,22 @@ class User implements UserInterface
     /**
      * @var \DateTime
      *
-     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(name="updated_at", type="datetime")
      */
     private $updatedAt;
 
-    public function __construct($username)
+    public function __construct()
     {
         $this->isActive = true;
-        $this->username = $username;
     }
 
     public function eraseCredentials()
@@ -140,6 +149,18 @@ class User implements UserInterface
     public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }

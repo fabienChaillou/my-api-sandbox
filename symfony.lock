@@ -16,6 +16,9 @@
             "src/Entity/.gitignore"
         ]
     },
+    "behat/transliterator": {
+        "version": "v1.2.0"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -109,6 +112,12 @@
     },
     "fig/link-util": {
         "version": "1.0.0"
+    },
+    "fzaninotto/faker": {
+        "version": "v1.9.0"
+    },
+    "gedmo/doctrine-extensions": {
+        "version": "v2.4.38"
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"

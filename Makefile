@@ -49,9 +49,9 @@ endef
 ########################################
 install: ## SetUp the project
 	@$(call run-php,composer install)
-	@$(call run-php,bin/sonsole doctrine:database:create)
-	@$(call run-php,bin/sonsole doctrine:schema:update --force)
-	@$(call run-php,bin/sonsole doctrine:fixtrues:load)
+	@$(call run-php,bin/console doctrine:database:create)
+	@$(call run-php,bin/console doctrine:schema:update --force)
+	@$(call run-php,bin/console doctrine:fixtrues:load)
 
 ########################################
 #              INFRA                   #

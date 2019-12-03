@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\GameRepository")
@@ -28,26 +29,29 @@ class Game
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank
      */
     private $name;
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank
      */
     private $status;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank
      */
     private $level;
 
     /**
-     * @ORM\Column(type="time")
+     * @ORM\Column(name="time", type="integer", nullable=true, options={"default":0})
      */
     private $time;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="nb_click", type="integer", nullable=true, options={"default":0})
      */
     private $nbClick;
 
@@ -62,14 +66,31 @@ class Game
     /**
      * @var \DateTime
      *
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(name="start", type="datetime", nullable=true)
+     */
+    private $start;
+
+    /**
+     * @var \DateTime
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(name="stop", type="datetime", nullable=true)
+     */
+    private $stop;
+
+    /**
+     * @var \DateTime
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="created_at", type="datetime")
      */
     private $createdAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(type="datetime")
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(name="updated_at", type="datetime")
      */
     private $updatedAt;
 
@@ -80,8 +101,6 @@ class Game
     {
         $this->status = self::STATUS_CREATED;
         $this->level = self::LEVEL_INIT;
-        $this->time = time();
-        $this->nbClick = 0;
     }
 
     public function getId(): ?int
@@ -125,12 +144,12 @@ class Game
         return $this;
     }
 
-    public function getTime(): ?\DateTimeInterface
+    public function getTime(): ?int
     {
         return $this->time;
     }
 
-    public function setTime(\DateTimeInterface $time): self
+    public function setTime(int $time): self
     {
         $this->time = $time;
 
@@ -169,6 +188,30 @@ class Game
     public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getStart(): ?\DateTimeInterface
+    {
+        return $this->start;
+    }
+
+    public function setStart(\DateTimeInterface $start): self
+    {
+        $this->start = $start;
+
+        return $this;
+    }
+
+    public function getStop(): ?\DateTimeInterface
+    {
+        return $this->stop;
+    }
+
+    public function setStop(\DateTimeInterface $stop): self
+    {
+        $this->stop = $stop;
 
         return $this;
     }
