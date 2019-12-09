@@ -12,7 +12,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PlayerRepository")
- * @ApiResource()
+ * @ApiResource(attributes={"pagination_items_per_page"=3})
  */
 class Player
 {
