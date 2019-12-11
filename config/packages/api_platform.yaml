@@ -15,7 +15,23 @@ api_platform:
         html:     ['text/html']
         jsonhal:  ['application/hal+json']
 
+    # enabled graphQL
+    graphql:
+        graphiql:
+            enabled: true
+
     # pagination config
     collection:
         pagination:
             items_per_page: 10
+
+    # filter
+#    player.date_filter:
+#        parent: 'api_platform.doctrine.orm.date_filter'
+#        arguments: [ { dateProperty: ~ } ]
+#        tags:  [ 'api_platform.filter' ]
+#        # The following are mandatory only if a _defaults section is defined
+#        # You may want to isolate filters in a dedicated file to avoid adding them
+#        autowire: false
+#        autoconfigure: false
+#        public: false

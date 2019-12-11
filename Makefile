@@ -70,5 +70,8 @@ infra-stop: ## to stop all the containers
 	@docker-compose stop
 
 infra-up: ## to start all the containers
+	@if [ ! -e .env ]; then cp .env.dist .env; fi
+	@rm -Rf var/{cache,logs,sessions}
+	@mkdir -m 755 var/{cache,logs,sessions}
 	@docker-compose up --build -d
-
+	@docker-compose exec php_fpm sh -c "chown -R www-data var"

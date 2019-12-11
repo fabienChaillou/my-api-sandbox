@@ -29,6 +29,10 @@ curl -X POST -H "Content-Type: application/json" http://localhost:80/login_check
 ```
 
 then:
-* Run http://localhost/docs
+#### Test with REST
+* Run `http://localhost/docs`
 * Click on `Authorize`
 * Add `Bearer {TOKEN}`
+
+#### Test with GraphQL
+Run `http://localhost/docs/graphiql`
